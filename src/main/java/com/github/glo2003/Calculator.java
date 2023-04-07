@@ -11,11 +11,17 @@ public class Calculator {
             return 0;
         }
 
+        String delimiter = ",";
+
+        if (numbers.startsWith("//")) {
+            delimiter = numbers.substring(2, 3);
+            numbers = numbers.substring(4);
+        }
+
         List<String> stringNumberList = new ArrayList<>();
-        String regex = "\\n|,+";
+        String regex = "\\n|" + delimiter + "+";
         stringNumberList.addAll(Arrays.asList(numbers.split(regex)));
         int sum;
-
         try {
             sum = stringNumberList.stream()
                     .map(stringNumer -> Integer.parseInt(stringNumer))

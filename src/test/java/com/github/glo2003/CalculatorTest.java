@@ -90,4 +90,12 @@ public class CalculatorTest {
 
         assertEquals(1, result);
     }
+
+    @Test
+    void whenDelimiterSpecified_thenReturnsTotal() {
+        int result = calculator.add("//;\n1;2\n3");
+
+        assertEquals(6, result);
+    }
+
 }
