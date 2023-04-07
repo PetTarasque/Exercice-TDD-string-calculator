@@ -104,4 +104,18 @@ public class CalculatorTest {
                 () -> calculator.add("1,-2"));
     }
 
+    @Test
+    void whenNumbersEqual1000_thenNoTrim() {
+        int result = calculator.add("2,1000");
+
+        assertEquals(1002, result);
+    }
+
+    @Test
+    void whenNumbersAbove1000_thenTrimThem() {
+        int result = calculator.add("1001,2");
+
+        assertEquals(2, result);
+    }
+
 }
