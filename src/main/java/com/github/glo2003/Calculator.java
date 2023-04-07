@@ -12,7 +12,7 @@ public class Calculator {
         }
 
         List<String> stringNumberList = new ArrayList<>();
-        String regex = ",+";
+        String regex = "\\n|,+";
         stringNumberList.addAll(Arrays.asList(numbers.split(regex)));
         int sum;
 
