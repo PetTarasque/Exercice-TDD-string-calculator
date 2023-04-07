@@ -1,12 +1,11 @@
 package com.github.glo2003;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class Calculator {
-    public int add(String numbers) {
+    public int add(String numbers){
         if (numbers.isEmpty()) {
             return 0;
         }
@@ -21,8 +20,15 @@ public class Calculator {
         List<String> stringNumberList = new ArrayList<>();
         String regex = "\\n|" + delimiter + "+";
         stringNumberList.addAll(Arrays.asList(numbers.split(regex)));
+
+
         int sum;
         try {
+            if(stringNumberList.stream()
+                    .map(Integer::parseInt)
+                    .anyMatch(number -> number <0)) {
+                throw new NegativeArraySizeException();
+            }
             sum = stringNumberList.stream()
                     .map(stringNumer -> Integer.parseInt(stringNumer))
                     .reduce(0, Integer::sum);

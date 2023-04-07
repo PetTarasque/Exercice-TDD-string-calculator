@@ -98,4 +98,10 @@ public class CalculatorTest {
         assertEquals(6, result);
     }
 
+    @Test
+    void whenNegativeNumber_thenThrowsNegativeNumberException() {
+        assertThrows(NegativeArraySizeException.class,
+                () -> calculator.add("1,-2"));
+    }
+
 }
